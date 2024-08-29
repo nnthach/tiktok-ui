@@ -1,0 +1,52 @@
+.menu-list {
+    width: 225px;
+
+    .menu-item{
+        margin-left: 0;
+        padding: 10px 16px;
+        width: 100%;
+        font-weight: 500;
+        border-radius: 0;
+
+        &.separate{
+            border-top: 1px solid rgba(22,24,35,0.2);
+        }
+
+        &:hover{
+            background-color: rgba(22, 24, 35, 0.05);
+        }
+    }
+}
+
+.menu-language{
+    overflow-y: overlay;
+}
+
+// Header
+.header{
+    position: relative;
+    flex-shrink: 0;
+    height: 50px;
+    margin-top: -8px;
+    border-radius: 8px 8px 0 0;
+}
+
+.back-btn{
+    width: 50px;
+    height: 100%;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.header-title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
