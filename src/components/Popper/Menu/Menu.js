@@ -19,7 +19,6 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false 
         return current.data.map((item, index) => {
             // level 2 of array
             const isParent = !!item.children; // if have children(level 2) => true
-
             return (
                 <MenuItem
                     key={index}
@@ -36,29 +35,34 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false 
         });
     };
 
+    const handleBack = () => {
+        // prev level 2 => slice(cut) to level 1
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+
+    const renderResult = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <PopperWrapper>
+                {history.length > 1 && <LanguageHeader title={current.title} onBack={handleBack} />}
+                <div className={cx('menu-language')}>{renderItems()}</div>
+            </PopperWrapper>
+        </div>
+    );
+
+    // Reset to first level (page)
+    const handleResetMenu = () => {
+        setHistory((prev) => prev.slice(0, 1));
+    };
+
     return (
         <Tippy
             delay={[0, 100]}
             interactive
             placement="bottom"
             hideOnClick={hideOnClick}
-            render={(attrs) => (
-                <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        {history.length > 1 && (
-                            <LanguageHeader
-                                title={current.title}
-                                onBack={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1)); // prev level 2 => slice(cut) to level 1
-                                }}
-                            />
-                        )}
-                        <div className={cx('menu-language')}>{renderItems()}</div>
-                    </PopperWrapper>
-                </div>
-            )}
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}
+            render={renderResult}
             // khi menu hide thì auto reset menu về level 1
+            onHide={handleResetMenu}
         >
             {children}
         </Tippy>

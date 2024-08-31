@@ -1,7 +1,7 @@
 .wrapper {
     display: inline-flex;
     align-items: center;
-    min-width: 100px;
+    min-width: 60px;
     height: 36px;
     padding: 6px 8px;
     font-size: 1.6rem;
@@ -46,8 +46,12 @@
 
 // Button size
 .small {
-    width: 88px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    width: 80px;
+    height: 26px;
     padding: 4px 16px;
+    justify-content: center;
 }
 
 .medium {
@@ -60,6 +64,7 @@
     height: 48px;
     padding: 6px 8px;
     font-size: 1.8rem;
+    justify-content: center;
 }
 
 .round {

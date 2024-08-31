@@ -7,13 +7,13 @@
     height: var(--default-layout-header-height);
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
+    background-color: white;
     display: flex;
     justify-content: center;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background-color: aqua;
     z-index: 10;
 }
 

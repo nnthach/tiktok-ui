@@ -1,0 +1,52 @@
+.wrapper {
+    width: 240px;
+    padding: 20px 0 26px 8px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.footer {
+    padding: 16px 0 0 8px;
+    font-size: 1.5rem;
+    color: rgba(22, 24, 35, 0.5);
+    cursor: pointer;
+    position: relative;
+
+    &::after{
+        content: "";
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        top: 0px;
+        height: 1px;
+        background: rgba(22, 24, 35, 0.12);
+        transform: scaleY(0.5);
+    }
+
+    h4 {
+        margin-top: 15px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    span{
+        margin-top: 5px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 1;
+    }
+
+    .copyright{
+        margin-right: 4px;
+    }
+
+    
+}

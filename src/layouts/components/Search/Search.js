@@ -1,4 +1,3 @@
-
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -18,12 +17,12 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 700); // delay tgian load sau search
+    const debouncedValue = useDebounce(searchValue, 700); // delay tgian load sau search
 
     const inputRef = useRef(); // focus after remove searchValue
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
@@ -31,14 +30,14 @@ function Search() {
         const fetchApi = async () => {
             setLoading(true);
 
-            const result = await search.search(debounced);
+            const result = await search.search(debouncedValue);
             setSearchResult(result);
 
             setLoading(false);
         };
 
         fetchApi();
-    }, [debounced]);
+    }, [debouncedValue]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -91,7 +90,8 @@ function Search() {
                         <button className={cx('clear-btn')} onClick={handleClear}>
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
-                    )}
+                    )
+                }
 
                 {/*Loading */}
                 {loading && <FontAwesomeIcon className={cx('loading-icon')} icon={faSpinner} />}
